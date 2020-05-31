@@ -1,37 +1,46 @@
 package missonToMars;
 
 public class SelectionCriteria {
-    private int range_of_age;
+    private int maxAge;
+    private int minAge;
     private int years_of_work_experience;
-    private boolean health_records;
+    private String health_records;
 
-    public SelectionCriteria(int range_of_age, int years_of_work_experience, boolean health_records) {
-        this.range_of_age = range_of_age;
+    public SelectionCriteria(int maxAge, int minAge, int years_of_work_experience, String health_records) {
+        this.maxAge = maxAge;
+    	this.minAge = minAge;
         this.years_of_work_experience = years_of_work_experience;
         this.health_records = health_records;
     }
 
-    public int getRange_of_age() {
-        return range_of_age;
+    public int getMaxAge() {
+        return maxAge;
     }
-
+    
+    public int getMinAge() {
+    	return minAge;
+    }
     public int getYears_of_work_experience() {
         return years_of_work_experience;
     }
 
-    public boolean isHealth_records() {
+    public String getHealth_records() {
         return health_records;
     }
 
-    public void setRange_of_age(int range_of_age) {
-        this.range_of_age = range_of_age;
+    public void setMaxAge(int maxAge) {
+        this.maxAge = maxAge;
     }
 
+    public void setMinAge(int minAge) {
+    	this.minAge = minAge;
+    }
+    
     public void setYears_of_work_experience(int years_of_work_experience) {
         this.years_of_work_experience = years_of_work_experience;
     }
 
-    public void setHealth_records(boolean health_records) {
+    public void setHealth_records(String health_records) {
         this.health_records = health_records;
     }
 }
