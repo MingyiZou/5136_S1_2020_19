@@ -4,28 +4,29 @@ public class Shuttle {
 
     private String s_name;
     private int s_manufact_year;
-    private float s_fuel_capacity;
+    private int s_fuel_capacity;
     private int s_passenger_capacity;
     private int s_cargo_capacity;
-    private float s_travel_speed;
-
+    private int s_travel_speed;
+    private String s_origin;
 
     public Shuttle(){
         s_name = "Unknown";
         s_manufact_year = 0;
-        s_fuel_capacity = 0.0;
+        s_fuel_capacity = 0;
         s_passenger_capacity = 0;
         s_cargo_capacity = 0;
-        s_travel_speed = 0.0;
+        s_travel_speed = 0;
+        s_origin = "Unknown";
     }
-
+    
     // GET
     public String getS_name()
     {
         return s_name;
     }
 
-    public int getS_manufact_year() {return  s_manufact_year}
+    public int getS_manufact_year() {return  s_manufact_year;}
 
     public float getS_fuel_capacity() {return s_fuel_capacity;}
 
@@ -35,8 +36,9 @@ public class Shuttle {
 
     public float getS_travel_speed() {return s_travel_speed;}
 
+    public String getS_origin() {return s_origin;}
     //SET
-    public void setS_name(int newS_name) {s_name = newS_name;}
+    public void setS_name(String newS_name) {s_name = newS_name;}
 
     public void setS_manufact_year(int newS_manufact_year) {s_manufact_year = newS_manufact_year;}
 
@@ -48,5 +50,5 @@ public class Shuttle {
 
     public void setS_travel_speed(int newS_travel_speed) {s_travel_speed = newS_travel_speed;}
 
-
+    public void setS_origin(String newS_origin) {s_origin = newS_origin;}
 }
