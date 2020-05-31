@@ -1,24 +1,42 @@
 package missonToMars;
 
 public class SelectionCriteria {
-    private int maxAge;
+    private String qualification; 
+	private int maxAge;
     private int minAge;
+    private String occupation;
     private int years_of_work_experience;
     private String health_records;
-
-    public SelectionCriteria(int maxAge, int minAge, int years_of_work_experience, String health_records) {
-        this.maxAge = maxAge;
-    	this.minAge = minAge;
-        this.years_of_work_experience = years_of_work_experience;
-        this.health_records = health_records;
+    private String criminal_records;
+    private String computer_skills;
+    private String language;
+    
+    public SelectionCriteria() {
+    	qualification = "Unknown";
+    	maxAge = 0;
+    	minAge = 0;
+    	occupation = "Unknown";
+    	years_of_work_experience = 0;
+    	health_records = "Unknown";
+    	criminal_records = "Unknown";
+    	computer_skills = "Unknown";
+    	language = "Unknown";
     }
-
+    
+    public String getOccupation() {
+    	return occupation;
+    }
+    
     public int getMaxAge() {
         return maxAge;
     }
     
     public int getMinAge() {
     	return minAge;
+    }
+    
+    public String getQualification() {
+    	return qualification;
     }
     public int getYears_of_work_experience() {
         return years_of_work_experience;
@@ -28,6 +46,26 @@ public class SelectionCriteria {
         return health_records;
     }
 
+    public String getCriminal_records( ) {
+    	return criminal_records;
+    }
+    
+    public String getComputer_skills() {
+    	return computer_skills;
+    }
+    
+    public String getLanguage() {
+    	return language;
+    }
+    
+    public void setQualification(String qualification) {
+    	this.qualification = qualification;
+    }
+    
+    public void setOccupation(String occupation) {
+    	this.occupation = occupation;
+    }
+    
     public void setMaxAge(int maxAge) {
         this.maxAge = maxAge;
     }
@@ -42,5 +80,17 @@ public class SelectionCriteria {
 
     public void setHealth_records(String health_records) {
         this.health_records = health_records;
+    }
+    
+    public void setCriminal_records(String criminal_records) {
+    	this.criminal_records = criminal_records;
+    }
+    
+    public void setComputer_skills(String computer_skills) {
+    	this.computer_skills = computer_skills;
+    }
+    
+    public void setLanguage(String language) {
+    	this.language = language;
     }
 }
