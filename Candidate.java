@@ -15,6 +15,8 @@ public class Candidate {
 	private String can_occupation;
 	private String can_computer_skills;
 	private String can_lang_spoken;
+	private String can_healthRecord;
+	private String can_criminalRecord;
 	
 	public Candidate()
 	{
@@ -30,6 +32,8 @@ public class Candidate {
 		can_occupation = "Unknown";
 		can_computer_skills = "Unknown";
 		can_lang_spoken = "Unknown";
+		can_healthRecord = "Unknown";
+		can_criminalRecord = "Unknown";
 	}
 	
 	public String getCan_name()
@@ -92,6 +96,16 @@ public class Candidate {
 		return can_lang_spoken;
 	}
 	
+	public String getCan_healthRecord()
+	{
+		return can_healthRecord;
+	}
+	
+	public String getCan_criminalRecord()
+	{
+		return can_criminalRecord;
+	}
+	
 	public void setCan_name(String newCan_name)
 	{
 		can_name = newCan_name;
@@ -151,4 +165,15 @@ public class Candidate {
 	{
 		can_lang_spoken = newCan_lang_spoken;
 	}
+	
+	public void setCan_healthRecord(String newCan_HealthRecord)
+	{
+		can_healthRecord = newCan_HealthRecord;
+	}
+	
+	public void setCan_criminalRecord(String newCan_CriminalRecord)
+	{
+		can_criminalRecord = newCan_CriminalRecord;
+	}
+	
 }
