@@ -1,8 +1,7 @@
-import org.apache.poi.sl.usermodel.Sheet;
+
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,7 +22,14 @@ public class readShuttle {
             {
                 Shuttle shuttle =new Shuttle();
                 shuttle.setS_id(Double.valueOf(row.getCell(0).toString()).intValue());
-
+                shuttle.setS_name(row.getCell(1).getStringCellValue());
+                shuttle.setS_manufact_year(Double.valueOf(row.getCell(2).toString()).intValue());
+                shuttle.setS_fuel_capacity(Double.valueOf(row.getCell(3).toString()).intValue());
+                shuttle.setS_passenger_capacity(Double.valueOf(row.getCell(4).toString()).intValue());
+                shuttle.setS_cargo_capacity(Double.valueOf(row.getCell(5).toString()).intValue());
+                shuttle.setS_travel_speed(Double.valueOf(row.getCell(6).toString()).intValue());
+                shuttle.setS_origin(row.getCell(7).getStringCellValue());
+                ListofShuttle.add(shuttle);
             }
 
         }
