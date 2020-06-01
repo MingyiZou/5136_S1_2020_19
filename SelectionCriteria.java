@@ -12,15 +12,15 @@ public class SelectionCriteria {
     private String language;
     
     public SelectionCriteria() {
-    	qualification = "Unknown";
+    	qualification = "Undefined";
     	maxAge = 0;
     	minAge = 0;
-    	occupation = "Unknown";
+    	occupation = "Undefined";
     	years_of_work_experience = 0;
-    	health_records = "Unknown";
-    	criminal_records = "Unknown";
-    	computer_skills = "Unknown";
-    	language = "Unknown";
+    	health_records = "Undefined";
+    	criminal_records = "Undefined";
+    	computer_skills = "Undefined";
+    	language = "Undefined";
     }
     
     public String getOccupation() {
