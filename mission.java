@@ -55,13 +55,8 @@ public class mission {
         m_status=newM_status;
     }
 
-    public void SetCargoRequir() {
-        String requir1="For the journey";
-        String requir2="For the mission";
-        String requir3="For other missions";
-        cargoRequire[0]=requir1;
-        cargoRequire[1]=requir2;
-        cargoRequire[2]=requir3;
+    public void SetCargoRequir(String[] newCargoRequir) {
+        cargoRequire=newCargoRequir;
     }
     public void SetMissionDurar(String newM_durarion) {
             m_durarion=newM_durarion;
