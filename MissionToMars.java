@@ -1,5 +1,7 @@
 package missonToMars;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class MissionToMars {
@@ -40,5 +42,30 @@ public class MissionToMars {
 		console.nextLine();
 		CreatingCriteria criteria1 = new CreatingCriteria();
 		criteria = criteria1.create();
+		try
+		{
+			PrintWriter outputFile = new PrintWriter("criteria.txt");
+			outputFile.print("Age of range: " + criteria.getMinAge() + "-" + criteria.getMaxAge());
+			outputFile.print(", ");
+			outputFile.print("Qualification: " + criteria.getQualification());
+			outputFile.print(", ");
+			outputFile.print("Years of work experience: " + criteria.getYears_of_work_experience());
+			outputFile.print(", ");
+			outputFile.print("Occupation: " + criteria.getOccupation());
+			outputFile.print(", ");
+			outputFile.print("Health records: " + criteria.getHealth_records());
+			outputFile.print(", ");
+			outputFile.print("Criminal records: " + criteria.getCriminal_records());
+			outputFile.print(", ");
+			outputFile.print("Computer skills: " + criteria.getComputer_skills());
+			outputFile.print(", ");
+			outputFile.print("Languages spoken: " + criteria.getLanguage());
+			System.out.println("criteria.txt is written successfully!");
+			outputFile.close();
+		}
+		catch(IOException exception)
+        {
+            System.out.println("something went wrong with accessing the file.");
+        }
 	}
 }
