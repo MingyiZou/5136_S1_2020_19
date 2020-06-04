@@ -1,5 +1,11 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 public class mission {
 
@@ -19,7 +25,7 @@ public class mission {
         private int mission_duration;
         private String mission_status;
 
-        public mission(){
+        public mission() {
             mission_name = "";
             mission_description = "";
             mission_destination = "";
@@ -212,5 +218,69 @@ public class mission {
                 mission_status + ';';
     }
 
+    public void createMission() {
+        System.out.println("Please enter mission name:");
+        mission mission = new mission();
+        Scanner scanner = new Scanner(System.in);
+        String name = scanner.nextLine();
+        mission.setMission_name(name);
+        System.out.println("Please enter mission description:");
+        String description = scanner.nextLine();
+        mission.setMission_destination(description);
+        System.out.println("Please enter country of origin:");
+        String origin = scanner.nextLine();
+        mission.setOrigin_country(origin);
+        System.out.println("Please enter countries allowed:");
+        String allowed = scanner.nextLine();
+        mission.setAllowed_country(allowed);
+        System.out.println("Please enter coordinator’s name:");
+        String coordinator = scanner.nextLine();
+        mission.setCoordinator_name(coordinator);
+        System.out.println("Please enter  contact information:");
+        String information = scanner.nextLine();
+        mission.setContact_info(information);
+        System.out.println("Please enter job name:");
+        String jobName = scanner.nextLine();
+        mission.setJob_name(jobName);
+        System.out.println("Please enter job description:");
+        String jobDescription = scanner.nextLine();
+        mission.setJob_description(jobDescription);
+        System.out.println("Please enter employment requirements:");
+        String requirements = scanner.nextLine();
+        mission.setEmployment_requirements(requirements);
+        System.out.println("Please enter cargo requirements:");
+        String cargoRequirements = scanner.nextLine();
+        mission.setCargo_requirements(cargoRequirements);
+        System.out.println("Please enter launch date(yyyyMMdd):");
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        String launchDate = scanner.nextLine();
+        try {
+            mission.setLaunchDate(format.parse(launchDate));
+        } catch (ParseException e) {
+
+        }
+        System.out.println("Please enter location:");
+        String location = scanner.nextLine();
+        mission.setDestination_location(location);
+        System.out.println("Please enter duration of the mission:");
+        int duration = scanner.nextInt();
+        mission.setMission_duration(duration);
+        System.out.println("Please enter status of the mission:");
+        String status = scanner.next();
+        mission.setMission_status(status);
+        writeFile(mission.toString(), "src/missions.txt");
+    }
+
+    private static void writeFile(String outputs, String path) {
+        try {
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(path)),
+                    "UTF-8"));
+            bw.write(outputs);
+            bw.newLine();
+            bw.close();
+        } catch (Exception e) {
+            System.err.println("write errors :" + e);
+        }
+    }
 
 }
