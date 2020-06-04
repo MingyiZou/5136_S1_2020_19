@@ -1,3 +1,4 @@
+package missonToMars;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,7 +36,7 @@ public class Mission {
             contact_info = "";
             job_name = "";
             job_description = "";
-            employment_requirements = "";
+            employment_requirements = new EmploymentDeployment();
             cargo_requirements = "";
             launchDate = new Date();
             destination_location = "";
@@ -47,7 +48,7 @@ public class Mission {
                    String mission_destination, String origin_country,
                    String allowed_country, String coordinator_name,
                    String contact_info, String job_name, String job_description,
-                   String employment_requirements, String cargo_requirements,
+                   EmploymentDeployment employment_requirements, String cargo_requirements,
                    Date lunch_date, String destination_location,
                    int mission_duration, String mission_status) {
         this.mission_name = mission_name;
@@ -139,11 +140,11 @@ public class Mission {
         this.job_description = job_description;
     }
 
-    public String getEmployment_requirements() {
+    public EmploymentDeployment getEmployment_requirements() {
         return employment_requirements;
     }
 
-    public void setEmployment_requirements(String employment_requirements) {
+    public void setEmployment_requirements(EmploymentDeployment employment_requirements) {
         this.employment_requirements = employment_requirements;
     }
 
@@ -233,7 +234,7 @@ public class Mission {
         System.out.println("Please enter countries allowed:");
         String allowed = scanner.nextLine();
         mission.setAllowed_country(allowed);
-        System.out.println("Please enter coordinatorâ€™s name:");
+        System.out.println("Please enter coordinator¡¯s name:");
         String coordinator = scanner.nextLine();
         mission.setCoordinator_name(coordinator);
         System.out.println("Please enter  contact information:");
