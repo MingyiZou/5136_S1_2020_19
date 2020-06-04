@@ -1,3 +1,4 @@
+package missonToMars;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
@@ -10,19 +11,24 @@ public class findCandidate{
     private static ArrayList<String> candidate;
 
 
-    public String[] selectionCandidate(SelectionCriterria criteria){
+    public String[] selectionCandidate(SelectionCriteria criteria){
         //get selection criteria
-        health_record = criteria.getHealth_records();
-        max_age = criteria.getMaxAge();
-        min_age = criteria.getMinAge();
-        years_of_work_experience = criteria.getYears_of_work_experience();
+        boolean health_record = criteria.getHealth_records();
+        int max_age = criteria.getMaxAge();
+        int min_age = criteria.getMinAge();
+        int years_of_work_experience = criteria.getYears_of_work_experience();
 
         // get candidate list
         candidate = readFile("candidate.txt");
 
 
-        for (int i = 0; i < candidate.length; i++){
-
+        for (int i = 0; i < candidate.size(); i++){
+        	String[] candidateInformation = candidate.get(i).split(",");
+        	int id = Integer.parseInt(candidateInformation[0]);
+        	String name = candidateInformation[1];
+        	int age = Integer.parseInt(candidateInformation[2]);
+        	boolean healthRecord = Boolean.parseBoolean(candidateInformation[3]);
+        	int years = Integer.parseInt(candidateInformation[4]);        	
         }
     }
 
