@@ -4,35 +4,35 @@ import java.util.Date;
 
 public class Candidate {
 	private String can_name;
-	private Date can_DOB;
+	private int can_age;
 	private String can_address;
 	private String can_nationality;
 	private int can_ID;
 	private String can_gender;
 	private String can_allergies;
 	private String can_food_prefere;
-	private String can_work_experience;
+	private int can_years_of_work_experience;
 	private String can_occupation;
 	private String can_computer_skills;
 	private String can_lang_spoken;
-	private String can_healthRecord;
+	private boolean can_healthRecord;
 	private String can_criminalRecord;
 	
 	public Candidate()
 	{
 		can_name = "Unknown";
-		can_DOB = null;
+		can_age = 0;
 		can_address = "Unknown";
 		can_nationality = "Unknown";
 		can_ID = 0;
 		can_gender = "Unknown";
 		can_allergies = "Unknown";
 		can_food_prefere = "Unknown";
-		can_work_experience = "Unknown";
+		can_years_of_work_experience = 0;
 		can_occupation = "Unknown";
 		can_computer_skills = "Unknown";
 		can_lang_spoken = "Unknown";
-		can_healthRecord = "Unknown";
+		can_healthRecord = true;
 		can_criminalRecord = "Unknown";
 	}
 	
@@ -41,9 +41,9 @@ public class Candidate {
 		return can_name;
 	}
 	
-	public Date getCan_DOB()
+	public int getCan_age()
 	{
-		return can_DOB;
+		return can_age;
 	}
 	
 	public String getCan_address()
@@ -76,9 +76,9 @@ public class Candidate {
 		return can_food_prefere;
 	}
 	
-	public String getCan_work_experience()
+	public int getCan_years_of_work_experience()
 	{
-		return can_work_experience;
+		return can_years_of_work_experience;
 	}
 	
 	public String getCan_occupation()
@@ -96,7 +96,7 @@ public class Candidate {
 		return can_lang_spoken;
 	}
 	
-	public String getCan_healthRecord()
+	public boolean getCan_healthRecord()
 	{
 		return can_healthRecord;
 	}
@@ -111,9 +111,9 @@ public class Candidate {
 		can_name = newCan_name;
 	}
 	
-	public void setCan_DOB(Date newCan_DOB)
+	public void setCan_age(int newCan_age)
 	{
-		can_DOB = newCan_DOB;
+		can_age = newCan_age;
 	}
 	
 	public void setCan_address(String newCan_address)
@@ -146,9 +146,9 @@ public class Candidate {
 		can_food_prefere = newCan_food_prefere;
 	}
 	
-	public void setCan_work_experience(String newCan_work_experience)
+	public void setCan_years_of_work_experience(int newCan_years_of_work_experience)
 	{
-		can_work_experience = newCan_work_experience;
+		can_years_of_work_experience = newCan_years_of_work_experience;
 	}
 	
 	public void setCan_occupation(String newCan_occupation)
@@ -166,7 +166,7 @@ public class Candidate {
 		can_lang_spoken = newCan_lang_spoken;
 	}
 	
-	public void setCan_healthRecord(String newCan_HealthRecord)
+	public void setCan_healthRecord(boolean newCan_HealthRecord)
 	{
 		can_healthRecord = newCan_HealthRecord;
 	}
