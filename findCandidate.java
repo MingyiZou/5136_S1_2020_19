@@ -9,7 +9,13 @@ public class findCandidate{
 
     private static String filename;
     private static ArrayList<String> candidate;
-
+    private static ArrayList<String> qualified_candidate;
+    private static boolean health_record;
+    private static int max_age;
+    private static int min_age;
+    private static int years_of_work_experience;
+    private static Mission mission;
+    private static EmploymentDeployment em_deployment;
 
     public String[] selectionCandidate(SelectionCriteria criteria){
         //get selection criteria
@@ -17,19 +23,36 @@ public class findCandidate{
         int max_age = criteria.getMaxAge();
         int min_age = criteria.getMinAge();
         int years_of_work_experience = criteria.getYears_of_work_experience();
+        int num_req = em_deployment.getEmpReq();
 
         // get candidate list
         candidate = readFile("candidate.txt");
 
-
+        int id;
+        String name;
+        int age;
+        boolean healthRecord;
+        int work_years;
+        ArrayList<String> qualified_candidate = new ArrayList<>();
         for (int i = 0; i < candidate.size(); i++){
         	String[] candidateInformation = candidate.get(i).split(",");
-        	int id = Integer.parseInt(candidateInformation[0]);
-        	String name = candidateInformation[1];
-        	int age = Integer.parseInt(candidateInformation[2]);
-        	boolean healthRecord = Boolean.parseBoolean(candidateInformation[3]);
-        	int years = Integer.parseInt(candidateInformation[4]);        	
+        	id = Integer.parseInt(candidateInformation[0]);
+        	name = candidateInformation[1];
+        	age = Integer.parseInt(candidateInformation[2]);
+        	healthRecord = Boolean.parseBoolean(candidateInformation[3]);
+        	work_years = Integer.parseInt(candidateInformation[4]);
+
+        	if (health_record == healthRecord && min_age < age && age > max_age && work_years > years_of_work_experience){
+                    qualified_candidate.add(name);
+            }
         }
+        System.out.println(qualified_candidate);
+
+        //check if the candidate list is enough for the number required.
+        if (qualified_candidate.size() < num_req){
+            System.out.println("Qualified Candidate in not enough. Please modify the selection Criteria");
+        }
+        return qualified_candidate
     }
 
 
@@ -71,9 +94,9 @@ public class findCandidate{
 // read employment deployment
 
     // read selection criteria
-//comparation health record, work experience, range of age
+//compareing health record, work experience, range of age
 //come out with a list of candidate the meet the criteria
-    //don't have to be larger than N, if i < N, message: not ehough candidate, change the selection crieteria.
+    //don't have to be larger than N, if i < N, message: not enough candidate, change the selection crieteria.
 
 
 }
