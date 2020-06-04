@@ -1,113 +1,120 @@
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
+public class Mission {
 
-public class mission {
+        private String m_name;
+        private String m_description;
+        private String m_destination;
+        private String oriCon;
+        private String allowCon;
+        private String co_Name;
+        private String contactInfo;
+        private Date launchDate;
+        private String m_status;
+        private String cargoRequire;
+        private int m_duration;
 
-    String m_name=null;
-    String m_description=null;
-    String m_destination=null;
-    String OriCon=null;
-    String AllowCon=null;
-    String CoordiName=null;
-    String ContactInfo=null;
-    String LaunchDate=null;
-    String m_status=null;
-    String[] cargoRequire=null;
-    String m_durarion=null;
-    public mission() {
-        m_name=null;
-        m_description=null;
-        m_destination=null;
-        OriCon=null;
-        AllowCon=null;
-        CoordiName=null;
-        ContactInfo=null;
-        LaunchDate=null;
-        m_status=null;
-        cargoRequire=null;
-        m_durarion=null;
-    }
-    public void SetMissionName(String newM_name) {
-        m_name=newM_name;
-    }
+        public Mission() {
+            m_name = "";
+            m_description = "";
+            m_destination = "";
+            oriCon = "";
+            allowCon = "";
+            co_Name = "";
+            contactInfo = "";
+            launchDate = new Date;
+            m_status = "";
+            cargoRequire = "";
+            m_duration = 0;
+        }
 
-    public void SetMissionDesc(String newM_description) {
-        m_description=newM_description;
-
-    }
-
-    public void SetOriCountry(String newOriCon) {
-     OriCon=newOriCon;
-
-    }
-    public void SetAllowCountry(String newAllowCon) {
-    AllowCon=newAllowCon;
-    }
-    public void SetCoordName(String newCoordiName) {
-        CoordiName=newCoordiName;
-    }
-    public void SetContactInfo(String newContanctInfo) {
-        ContactInfo=newContanctInfo;
-    }
-    public void SetLaunchDate(String newLaunchDate) {
-        LaunchDate=newLaunchDate;
-    }
-    public void SetMissionStatus(String newM_status) {
-        m_status=newM_status;
-    }
-
-    public void SetCargoRequir(String[] newCargoRequir) {
-        cargoRequire=newCargoRequir;
-    }
-    public void SetMissionDurar(String newM_durarion) {
-            m_durarion=newM_durarion;
-    }
-
-    public String GetMissionName() {
+    public String getM_name() {
         return m_name;
-
     }
 
-    public String GetMissionDescr() {
+    public void setM_name(String m_name) {
+        this.m_name = m_name;
+    }
+
+    public String getM_description() {
         return m_description;
     }
 
-    public String GetMissionDestination() {
+    public void setM_description(String m_description) {
+        this.m_description = m_description;
+    }
+
+    public String getM_destination() {
         return m_destination;
     }
 
-    public String GetOrigCountry() {
-        return OriCon;
+    public void setM_destination(String m_destination) {
+        this.m_destination = m_destination;
     }
 
-    public String GetAllowCountry() {
-        return AllowCon;
-
+    public String getOriCon() {
+        return oriCon;
     }
 
-    public String GetCoordiname() {
-        return CoordiName;
-
+    public void setOriCon(String oriCon) {
+        this.oriCon = oriCon;
     }
 
-    public String GetCoordiContact() {
-        return ContactInfo;
-
+    public String getAllowCon() {
+        return allowCon;
     }
 
-    public String GetLaunchDate() {
-
-        return LaunchDate;
+    public void setAllowCon(String allowCon) {
+        this.allowCon = allowCon;
     }
 
-    public String GetMissionStatus() {
+    public String getCo_Name() {
+        return co_Name;
+    }
+
+    public void setCo_Name(String co_Name) {
+        this.co_Name = co_Name;
+    }
+
+    public String getContactInfo() {
+        return contactInfo;
+    }
+
+    public void setContactInfo(String contactInfo) {
+        this.contactInfo = contactInfo;
+    }
+
+    public Date getLaunchDate() {
+        return launchDate;
+    }
+
+    public void setLaunchDate(Date launchDate) {
+        this.launchDate = launchDate;
+    }
+
+    public String getM_status() {
         return m_status;
     }
-    public String GetMissionDurartion() {
 
-        return m_durarion;
+    public void setM_status(String m_status) {
+        this.m_status = m_status;
     }
-    public String[] GetCargoRequire() {
 
+    public String getCargoRequire() {
         return cargoRequire;
+    }
+
+    public void setCargoRequire(String cargoRequire) {
+        this.cargoRequire = cargoRequire;
+    }
+
+    public int getM_duration() {
+        return m_duration;
+    }
+
+    public void setM_duration(int m_duration) {
+        this.m_duration = m_duration;
     }
 }
