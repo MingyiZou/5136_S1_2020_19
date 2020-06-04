@@ -247,8 +247,13 @@ public class Mission {
         String jobDescription = scanner.nextLine();
         mission.setJob_description(jobDescription);
         System.out.println("Please enter employment requirements:");
-        String requirements = scanner.nextLine();
-        mission.setEmployment_requirements(requirements);
+        scanner.nextLine();
+        System.out.println("Please enter the title:");
+        String title = scanner.nextLine();
+        mission.employment_requirements.setEmpTitle(title);
+        System.out.println("Please enter the number required:");
+        int number = scanner.nextInt();
+        mission.employment_requirements.setNumReq(number);
         System.out.println("Please enter cargo requirements:");
         String cargoRequirements = scanner.nextLine();
         mission.setCargo_requirements(cargoRequirements);
