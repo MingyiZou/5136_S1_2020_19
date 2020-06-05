@@ -15,15 +15,15 @@ public class findCandidate{
     private static int min_age;
     private static int years_of_work_experience;
     private static Mission mission;
-    private static EmploymentDeployment em_deployment;
 
-    public String[] selectionCandidate(SelectionCriteria criteria){
+
+    public ArrayList<String> selectionCandidate(SelectionCriteria criteria){
         //get selection criteria
         boolean health_record = criteria.getHealth_records();
         int max_age = criteria.getMaxAge();
         int min_age = criteria.getMinAge();
         int years_of_work_experience = criteria.getYears_of_work_experience();
-        int num_req = em_deployment.getEmpReq();
+
 
         // get candidate list
         candidate = readFile("candidate.txt");
@@ -49,10 +49,10 @@ public class findCandidate{
         System.out.println(qualified_candidate);
 
         //check if the candidate list is enough for the number required.
-        if (qualified_candidate.size() < num_req){
+        if (qualified_candidate.size() < mission.getEmployment_requirements().getEmpReq()){
             System.out.println("Qualified Candidate in not enough. Please modify the selection Criteria");
         }
-        return qualified_candidate
+        return qualified_candidate;
     }
 
 
