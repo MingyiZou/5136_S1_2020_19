@@ -1,5 +1,7 @@
 package missonToMars;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class CreatingCriteria {
@@ -19,7 +21,7 @@ public class CreatingCriteria {
 		System.out.println("Step 1: Please enter the health record criteria:");
 		Scanner input=new Scanner(System.in);
 		String record = input.nextLine();
-		criteria1.setHealth_records(record);
+		criteria1.setHealth_records(Boolean.parseBoolean(record));
 		System.out.println("Step2: Please input the maximum age required: ");
 		Scanner input1=new Scanner(System.in);
 		int maxAge = input1.nextInt();
@@ -88,7 +90,7 @@ public class CreatingCriteria {
 						System.out.println("Please enter the health record criteria:");
 						Scanner input11 = new Scanner(System.in);
 						String record1 = input11.nextLine();
-						criteria1.setHealth_records(record1);
+						criteria1.setHealth_records(Boolean.parseBoolean(record1));
 						System.out.println("Criterias added successfully");
 						b = false;
 					} else if (option.equals("f") || option.equals("F")) {
@@ -161,7 +163,7 @@ public class CreatingCriteria {
 						System.out.println("Criterias removed successfully");
 						c = false;
 					} else if (option1.equals("e") || option1.equals("E")) {
-						criteria1.setHealth_records("Undefined");
+						criteria1.setHealth_records(true);
 						System.out.println("Criterias removed successfully");
 						c = false;
 					} else if (option1.equals("f") || option1.equals("F")) {
@@ -203,6 +205,31 @@ public class CreatingCriteria {
 			}
 		}
 		System.out.println("You have finished creating selection criteria");
+		try
+		{
+			PrintWriter outputFile = new PrintWriter("criteria.txt");
+			outputFile.print("Age of range: " + criteria.getMinAge() + "-" + criteria.getMaxAge());
+			outputFile.print(", ");
+			outputFile.print("Qualification: " + criteria.getQualification());
+			outputFile.print(", ");
+			outputFile.print("Years of work experience: " + criteria.getYears_of_work_experience());
+			outputFile.print(", ");
+			outputFile.print("Occupation: " + criteria.getOccupation());
+			outputFile.print(", ");
+			outputFile.print("Health records: " + criteria.getHealth_records());
+			outputFile.print(", ");
+			outputFile.print("Criminal records: " + criteria.getCriminal_records());
+			outputFile.print(", ");
+			outputFile.print("Computer skills: " + criteria.getComputer_skills());
+			outputFile.print(", ");
+			outputFile.print("Languages spoken: " + criteria.getLanguage());
+			System.out.println("criteria.txt is written successfully!");
+			outputFile.close();
+		}
+		catch(IOException exception)
+        {
+            System.out.println("something went wrong with accessing the file.");
+        }
 		return criteria1;
 	}
 }
