@@ -170,6 +170,7 @@ public class Mission {
         }
         return convert;
     }
+
     public void setLaunchDate(Date launchDate) {
         this.launchDate = launchDate;
     }
@@ -234,7 +235,7 @@ public class Mission {
         System.out.println("Please enter countries allowed:");
         String allowed = scanner.nextLine();
         mission.setAllowed_country(allowed);
-        System.out.println("Please enter coordinator¡¯s name:");
+        System.out.println("Please enter coordinatorï¿½ï¿½s name:");
         String coordinator = scanner.nextLine();
         mission.setCoordinator_name(coordinator);
         System.out.println("Please enter  contact information:");

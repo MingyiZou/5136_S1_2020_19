@@ -33,6 +33,7 @@ public class findCandidate{
         int age;
         boolean healthRecord;
         int work_years;
+
         ArrayList<String> qualified_candidate = new ArrayList<>();
         for (int i = 0; i < candidate.size(); i++){
         	String[] candidateInformation = candidate.get(i).split(",");
@@ -41,6 +42,8 @@ public class findCandidate{
         	age = Integer.parseInt(candidateInformation[2]);
         	healthRecord = Boolean.parseBoolean(candidateInformation[3]);
         	work_years = Integer.parseInt(candidateInformation[4]);
+
+
 
         	if (health_record == healthRecord && min_age < age && age > max_age && work_years > years_of_work_experience){
                     qualified_candidate.add(name);
@@ -87,16 +90,6 @@ public class findCandidate{
         return candidates;
     }
 
-
-    // read candidate
-//    ArrayList<readCandidate> Candidates = new ArrayList<readCandidate>();
-//    readCandidate candidate = new readCandidate();
-// read employment deployment
-
-    // read selection criteria
-//compareing health record, work experience, range of age
-//come out with a list of candidate the meet the criteria
-    //don't have to be larger than N, if i < N, message: not enough candidate, change the selection crieteria.
 
 
 }
