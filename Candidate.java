@@ -3,6 +3,7 @@ package missonToMars;
 import java.util.Date;
 
 public class Candidate {
+	private String can_qulification;
 	private String can_name;
 	private int can_age;
 	private String can_address;
@@ -20,6 +21,7 @@ public class Candidate {
 	
 	public Candidate()
 	{
+		can_qulification = "Unknown";
 		can_name = "Unknown";
 		can_age = 0;
 		can_address = "Unknown";
@@ -36,6 +38,10 @@ public class Candidate {
 		can_criminalRecord = true;
 	}
 	
+	public String getQualification()
+	{
+		return can_qulification;
+	}
 	public String getCan_name()
 	{
 		return can_name;
@@ -104,6 +110,11 @@ public class Candidate {
 	public boolean getCan_criminalRecord()
 	{
 		return can_criminalRecord;
+	}
+	
+	public void setQualification(String newQualification)
+	{
+		can_qulification = newQualification;
 	}
 	
 	public void setCan_name(String newCan_name)
