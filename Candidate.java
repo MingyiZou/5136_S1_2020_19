@@ -16,7 +16,7 @@ public class Candidate {
 	private String can_computer_skills;
 	private String can_lang_spoken;
 	private boolean can_healthRecord;
-	private String can_criminalRecord;
+	private boolean can_criminalRecord;
 	
 	public Candidate()
 	{
@@ -33,7 +33,7 @@ public class Candidate {
 		can_computer_skills = "Unknown";
 		can_lang_spoken = "Unknown";
 		can_healthRecord = true;
-		can_criminalRecord = "Unknown";
+		can_criminalRecord = true;
 	}
 	
 	public String getCan_name()
@@ -101,7 +101,7 @@ public class Candidate {
 		return can_healthRecord;
 	}
 	
-	public String getCan_criminalRecord()
+	public boolean getCan_criminalRecord()
 	{
 		return can_criminalRecord;
 	}
@@ -171,7 +171,7 @@ public class Candidate {
 		can_healthRecord = newCan_HealthRecord;
 	}
 	
-	public void setCan_criminalRecord(String newCan_CriminalRecord)
+	public void setCan_criminalRecord(boolean newCan_CriminalRecord)
 	{
 		can_criminalRecord = newCan_CriminalRecord;
 	}
