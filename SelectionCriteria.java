@@ -7,7 +7,7 @@ public class SelectionCriteria {
     private String occupation;
     private int years_of_work_experience;
     private boolean health_records;
-    private String criminal_records;
+    private boolean criminal_records;
     private String computer_skills;
     private String language;
     
@@ -18,7 +18,7 @@ public class SelectionCriteria {
     	occupation = "Undefined";
     	years_of_work_experience = 0;
     	health_records = true;
-    	criminal_records = "Undefined";
+    	criminal_records = true;
     	computer_skills = "Undefined";
     	language = "Undefined";
     }
@@ -46,7 +46,7 @@ public class SelectionCriteria {
         return health_records;
     }
 
-    public String getCriminal_records( ) {
+    public boolean getCriminal_records( ) {
     	return criminal_records;
     }
     
@@ -82,7 +82,7 @@ public class SelectionCriteria {
         this.health_records = health_records;
     }
     
-    public void setCriminal_records(String criminal_records) {
+    public void setCriminal_records(boolean criminal_records) {
     	this.criminal_records = criminal_records;
     }
     

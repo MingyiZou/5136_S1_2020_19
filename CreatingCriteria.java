@@ -97,7 +97,7 @@ public class CreatingCriteria {
 						System.out.println("Please enter the criminal record criteria:");
 						Scanner input12 = new Scanner(System.in);
 						String record2 = input12.nextLine();
-						criteria1.setCriminal_records(record2);
+						criteria1.setCriminal_records(Boolean.parseBoolean(record2));
 						System.out.println("Criterias added successfully");
 						b = false;
 					} else if (option.equals("g") || option.equals("G")) {
@@ -167,7 +167,7 @@ public class CreatingCriteria {
 						System.out.println("Criterias removed successfully");
 						c = false;
 					} else if (option1.equals("f") || option1.equals("F")) {
-						criteria1.setCriminal_records("Undefined");
+						criteria1.setCriminal_records(true);
 						System.out.println("Criterias removed successfully");
 						c = false;
 					} else if (option1.equals("g") || option1.equals("G")) {
