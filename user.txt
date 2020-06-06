@@ -1,0 +1,6 @@
+hwan=1234=candidate
+cht=1234=mco2020
+12=12=null
+HWAN=dabendan=mad2020
+1234=1234=
+hwandabendan=1234=mad2020
