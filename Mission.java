@@ -312,7 +312,7 @@ public class Mission {
         return missions;
     }
     //f1 - read mission file
-    private static ArrayList<Mission> readMissionFile(String filename) {
+    static ArrayList<Mission> readMissionFile(String filename) {
         File file=new File(filename);
         ArrayList<Mission> missions = new ArrayList<Mission>();
         try {
@@ -392,13 +392,13 @@ public class Mission {
         System.out.println("**************************************");
         System.out.println(mission.showConfirmInfo());
         System.out.println("**************************************");
-        System.out.println("Are you sure create the mission:(y/n)");
+        System.out.println("Mission confirm:(y/n)");
         Scanner scanner1=new Scanner(System.in);
         String confirm = scanner1.next();
         if (confirm.equalsIgnoreCase("Y")){
 
             writeFile(mission.writeFileInfo(), filename);
-            System.out.println("The mission has created.");
+            System.out.println("The mission has been created.");
         //    displayCoordinatorMenu();
         }else if (confirm.equalsIgnoreCase("N")){
             createMission(filename);
@@ -452,25 +452,25 @@ public class Mission {
 
     public static void EditMission(String filename)
     {
-        if (displayMissions(filename).size()==0)
+        if (readMissionFile(filename).size()==0)
         {
             System.out.println("Please create mission first.");
         }
         else{
-
+        missions=readMissionFile(filename);
         String choice=null;
+            for(int i=0;i<missions.size();i++)
+            {
+                System.out.println("--------------------MISSION INFORMATION:--------------------");
+                System.out.println("Mission name: "+missions.get(i).getMission_name()+"\nMission description: "+missions.get(i).getMission_description()
+                        +"\nOrigin Country: "+missions.get(i).getOrigin_country()+"\nAllowed Country: "+missions.get(i).getAllowed_country()+"\nCooridinator name: "+
+                        missions.get(i).getCoordinator_name()+"\nCoordinator Contact Info: "+missions.get(i).getContact_info()+"\nJob name: "+missions.get(i).getJob_name()+"\nJob description: "+
+                        missions.get(i).getJob_description()+"\nEmployment requirements titles: "+missions.get(i).getEmployment_requirements_title()+
+                        "\nEmployment requirements numbers: "+missions.get(i).getEmployment_requirements_number()+"\nCargo requirements: "+missions.get(i).getCargo_requirements()+
+                        "\nLaunch Date: "+missions.get(i).getLaunchDate()+"\nDestination Location: "+missions.get(i).getDestination_location()+"\nMission Duration: "+missions.get(i).getMission_duration()
+                        +"\nMission status: "+missions.get(i).getMission_status());
+            }
       do {
-          for(int i=0;i<missions.size();i++)
-          {
-              System.out.println("--------------------MISSION INFORMATION:--------------------");
-              System.out.println("Mission name: "+missions.get(i).getMission_name()+"\nMission description: "+missions.get(i).getMission_description()
-                      +"\nOrigin Country: "+missions.get(i).getOrigin_country()+"\nAllowed Country: "+missions.get(i).getAllowed_country()+"\nCooridinator name: "+
-                      missions.get(i).getCoordinator_name()+"\nCoordinator Contact Info: "+missions.get(i).getContact_info()+"\nJob name: "+missions.get(i).getJob_name()+"\nJob description: "+
-                      missions.get(i).getJob_description()+"\nEmployment requirements titles: "+missions.get(i).getEmployment_requirements_title()+
-                      "\nEmployment requirements numbers: "+missions.get(i).getEmployment_requirements_number()+"\nCargo requirements: "+missions.get(i).getCargo_requirements()+
-                      "\nLaunch Date: "+missions.get(i).getLaunchDate()+"\nDestination Location: "+missions.get(i).getDestination_location()+"\nMission Duration: "+missions.get(i).getMission_duration()
-                      +"\nMission status: "+missions.get(i).getMission_status());
-          }
           showList();
           Scanner sc=new Scanner(System.in);
           choice=sc.nextLine();
@@ -552,13 +552,15 @@ public class Mission {
                   System.out.println("**************************************");
                   System.out.println(newmission.showConfirmInfo());
                   System.out.println("**************************************");
-                  System.out.println("Are you sure changed the mission?:(y/n)");
+                  System.out.println("Do you want to change the mission?:(y/n)");
                   Scanner scanner1=new Scanner(System.in);
                   String confirm = scanner1.next();
                   if (confirm.equalsIgnoreCase("Y")){
-
                       writeFile(newmission.writeFileInfo(), filename);
-                      System.out.println("The mission has changed.");}
+                      System.out.println("The mission has been changed.");
+                      choice="0";
+                  }
+
                   else{
                       break;
                   }

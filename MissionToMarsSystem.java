@@ -27,8 +27,8 @@ import java.util.Scanner;
                     case "1":
                         System.out.println("-------------------Login------------------");
                         boolean flag=false;
-
-                        do {
+                        int j=0;
+                        do{
                             System.out.println("Please input your username");
                             name = sc.nextLine();
                             System.out.println("Please input your password");
@@ -38,10 +38,16 @@ import java.util.Scanner;
                             if (flag==false)
                             {
                                 System.out.println("Username or password error");
+                                j++;
+                            }
+                            if(j==3)
+                            {
+                                System.out.println("ERROR Login 3 times,System is closing");
+                                System.exit(0);
                             }
                         }
-                        while(flag==false);
-
+                        while(flag==false&&j<3);
+                        boolean entry=false;
                         String sfilename=name+"shuttledata.txt";
                         fileExit(sfilename);
                         selecteds=readShuttle.shuttleinfo(sfilename);
@@ -62,145 +68,165 @@ import java.util.Scanner;
                         String s4=null;
                         do {
                             showList();
-                            h=sc.nextLine();
-                            switch (h)
-                            {
+                            h = sc.nextLine();
+                            switch (h) {
                                 case "1":
                                     do {
-                                        if(id==2)
-                                        {
+                                        if (id == 2) {
                                             MMenuForC();
-                                        }
-                                        else if(id==1)
-                                        {
+                                        } else if (id == 1) {
                                             MMenuForA();
                                         }
-                                        else{
+                                        else {
                                             nomalUser();
                                         }
-                                        s1=sc.nextLine();
-                                        switch (s1)
-                                        {
-                                            case "3":
-                                                Mission.createMission("missions.txt");
-                                                   break;
-                                            case "1":
-                                               missions=Mission.displayMissions("missions.txt");
-                                                break;
-                                            case "2":
-                                                Mission.EditMission("missions.txt");
-                                                break;
-                                            default:
-                                                System.out.println("Error input");
-                                                break;
-                                        }
-                                    }while(!s1.equals("0"));
-                                    break;
-                                case "2":
+                                            s1 = sc.nextLine();
+                                         missions=Mission.readMissionFile("missions.txt");
+                                            switch (s1) {
 
-                                    do {
-                                        SMenu();
-                                        s2=sc.nextLine();
-                                        switch(s2) {
-                                            case "1":
-                                                System.out.println("******************Shuttle Info******************");
-                                                readShuttle.showinfo(shuttles);
-                                                break;
-                                            case "2":
-                                                System.out.println("******************Shuttle Selection******************");
-                                                int selection = -1;
-                                                String a=null;
-                                                if (selecteds.size() != 0) {
-                                                    System.out.println("Shuttle has been selected,do you want to change?y/n");
-                                                    Scanner sc2=new Scanner(System.in);
-                                                    a=sc2.nextLine();
-                                                     if (a.equals("y")){
-                                                        for (int i = 0; i < selecteds.size(); i++)
-                                                        {
-                                                            selecteds.remove(i);
-                                                        }}
-                                                     if(a.equals("n")) {
-                                                         System.out.println(selecteds.get(0).getS_id());
-                                                     }
-                                                } else {
-                                                    System.out.println("Please input the shuttle that you want to choose");
-                                                    do {
-                                                        selection = sc.nextInt();
-                                                        if (selection > shuttles.size() - 1) {
-                                                            System.out.println("Check the number");
-                                                        }
-                                                    } while (selection > shuttles.size() - 1);
-                                                    selecteds.add(shuttles.get(selection - 1));
-                                                    System.out.println("OK");
-                                                }break;
-                                            default:
-                                                System.out.println("Error input");
-                                                break;
+                                                case "3":
+                                                    Mission.createMission("missions.txt");
+                                                    break;
+                                                case "1":
+                                                    Mission.displayMissions("missions.txt");
+                                                    break;
+                                                case "2":
+
+                                                    Mission.EditMission("missions.txt");
+                                                    break;
+                                                default:
+
+                                                    break;
+                                            }
                                         }
-                                    }while(!s2.equals("0"));
-                                    break;
-                                case "3":
-                                    do{
-                                        CMenu();
-                                        s3=sc.nextLine();
-                                        switch (s3) {
-                                            case "1":
-                                                System.out.println("******************SELECTED Shuttle INFO******************");
-                                                if (selecteds.size() == 0) {
-                                                    System.out.println("Shuttle not selected");
-                                                } else {
-                                                    readShuttle.showinfo(selecteds);
-                                                }
-                                                break;
-                                            case "2":
-                                                System.out.println("******************Employment Requirements******************");
-                                                if(missions==null)
-                                                {
-                                                    System.out.println("Employment requirements not set please back and create the mission");
+                                        while (!s1.equals("0")) ;
+                                        break;
+                                        case "2":
+                                            do {
+                                                if (id == 2||id == 1) {
+                                                    SMenu();
                                                 }
                                                 else {
-                                                    System.out.println("The information of the employment requirements: \nEmployment requirements: "
-                                                            +missions.get(0).getEmployment_requirements_title()+"\nNumber required: "+missions.get(0).getEmployment_requirements_number());
-                                                }break;
-                                            case "3":
-                                                System.out.println("******************Create Criteria******************");
-                                               // CreatingCriteria criteria1 = new CreatingCriteria();
-                                                criteria = criteria1.create(name+"criteria.txt");
-                                                break;
-                                            default:
-                                                System.out.println("Error input");
-                                                break;
-                                        }
-                                    }while(!s3.equals("0"));
-                                    break;
-                                case "4":
-                                    do{
-                                        FMenu();
-                                        s4=sc.nextLine();
-                                        switch (s4){
-                                            case "1":
-                                                System.out.println("******************Candidates Matching******************");
-                                                if(criteria.getState().equals("Undefined"))
-                                                {
-                                                    System.out.println("Criteria not set,Please back!");
+                                                    nomalUser();
                                                 }
-                                                else{
-                                                 se=findCandidate.selectionCandidate(criteria);
+                                                s2 = sc.nextLine();
+                                                switch (s2) {
+                                                    case "1":
+                                                        System.out.println("******************Shuttle Info******************");
+                                                        readShuttle.showinfo(shuttles);
+                                                        break;
+                                                    case "2":
+                                                        System.out.println("******************Shuttle Selection******************");
+                                                        int selection = -1;
+                                                        String a = null;
+                                                        if (selecteds.size() != 0) {
+                                                            System.out.println("Shuttle has been selected,do you want to delete?y/n");
+                                                            Scanner sc2 = new Scanner(System.in);
+                                                            a = sc2.nextLine();
+                                                            if (a.equalsIgnoreCase("y")) {
+                                                                for (int i = 0; i < selecteds.size(); i++) {
+                                                                    selecteds.remove(i);
+                                                                }
+                                                                System.out.println("Shuttle selection has been deleted.");
+                                                            }
+                                                            if (a.equalsIgnoreCase("n")) {
+                                                                System.out.println("Shuttle: "+selecteds.get(0).getS_name());
+                                                            }
+                                                        } else {
+                                                            System.out.println("Please input the shuttle that you want to choose");
+                                                            do {
+                                                                selection = sc.nextInt();
+                                                                if (selection > shuttles.size()) {
+                                                                    System.out.println("Check the number");
+                                                                }
+                                                            } while (selection > shuttles.size());
+                                                            selecteds.add(shuttles.get(selection - 1));
+                                                            System.out.println("OK");
+                                                            writeFile(readShuttle.readinfo(selecteds),name+"shuttledata.txt");
+                                                            break;
+                                                        }
+                                                    default:
+                                                        break;
                                                 }
-                                                break;
-                                            default:
-                                                System.out.println("Error input");
-                                                break;
-                                        }
+                                            } while (!s2.equals("0"));
+                                            break;
+                                        case "3":
+                                            do {
+                                                if (id == 2||id == 1) {
+                                                    CMenu();
+                                                }
+                                                else {
+                                                    nomalUser();
+                                                }
+                                                s3 = sc.nextLine();
+                                                switch (s3) {
+                                                    case "1":
+                                                        System.out.println("******************SELECTED Shuttle INFO******************");
+                                                        if (selecteds.size() == 0) {
+                                                            System.out.println("Shuttle not selected");
+                                                        } else {
+                                                            readShuttle.showinfo(selecteds);
+                                                        }
+                                                        break;
+                                                    case "2":
+                                                        System.out.println("******************Employment Requirements******************");
+                                                        do{
+                                                            missions=Mission.displayMissions("missions.txt");
+                                                        }while (missions.size() == 0);
+                                                        if (missions.size() == 0) {
+                                                            System.out.println("Employment requirements not set please back and create the mission");
+                                                        } else {
 
-                                    }while(!s4.equals("0"));
-                                    break;
-                                default:
-                                    System.out.println("Error input");
-                                    break;
-                            }
-                        }while(!h.equals("5"));
-                        break;
+                                                            System.out.println("The information of the employment requirements: \nEmployment title: "
+                                                                    + missions.get(0).getEmployment_requirements_title() + "\nNumber required: " + missions.get(0).getEmployment_requirements_number());
+                                                        }
+                                                        break;
+                                                    case "3":
+                                                        System.out.println("******************Create Criteria******************");
+                                                         CreatingCriteria criteria1 = new CreatingCriteria();
+                                                        criteria = criteria1.create(name + "criteria.txt");
+                                                        break;
+                                                    default:
+
+                                                        break;
+                                                }
+                                            } while (!s3.equals("0"));
+                                            break;
+                                        case "4":
+                                            do {
+                                                if (id == 2||id == 1) {
+                                                    FMenu();
+                                                }
+                                                else {
+                                                    nomalUser();
+                                                }
+                                                s4 = sc.nextLine();
+                                                switch (s4) {
+                                                    case "1":
+                                                        boolean exits=false;
+                                                        System.out.println("******************Candidates Matching******************");
+                                                        try{
+                                                            criteria.toString().isEmpty();
+                                                        } catch (NullPointerException e)
+                                                        {
+                                                            System.out.println("Criteria not set,Please back!");
+                                                            exits=true;
+                                                        }
+                                                        if(exits==false){
+                                                            se = findCandidate.selectionCandidate(criteria);
+                                                        }
+                                                        break;
+                                                    default:
+                                                        break;
+                                                }
+
+                                            } while (!s4.equals("0"));
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                            } while (!h.equals("5")) ;
+                            break;
 
 
                     case "2":
@@ -212,17 +238,22 @@ import java.util.Scanner;
                         System.out.println("Please input identification code");
                         String newuserrole=sc.nextLine();
                         user u=new user();
+                        if(newname.isEmpty()||newpassword.isEmpty())
+                        {
+                            System.out.println("Input is error,Register failed.");
+                        }
+                        else{
                         u.setPassword(newpassword);
                         u.setUsername(newname);
                         u.setUserrole(newuserrole);
                         uid.regist(u);
+                        }
 
                         break;
 
                     case "3":
                         System.out.println("Thankyou for use MissionToMars System");
                         sc.close();
-                        writeFile(readShuttle.readinfo(selecteds),name+"shuttledata.txt");
                         System.exit(0);
                         break;
                     default:
@@ -279,7 +310,8 @@ public static void fileExit(String filename){
      }
      public static void nomalUser(){
          System.out.println("Premission Denied");
-         System.out.println("press 0 to back");
+         System.out.println("System is closing");
+         System.exit(0);
      }
      public static void SMenu(){
          System.out.println("******************Shuttle Menu******************");
@@ -288,7 +320,7 @@ public static void fileExit(String filename){
      }
      public static void CMenu(){
          System.out.println("******************Criteria Menu******************");
-         System.out.println("0.Back to previous menu     1.Show shuttle info     2.Show mission’s employment requirements     3.Create criteria ");
+         System.out.println("0.Back to previous menu     1.Show shuttle info     2.Show employment requirements     3.Create criteria ");
          System.out.println("Please input the option:");
      }
      public static void FMenu(){
