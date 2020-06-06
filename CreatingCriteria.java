@@ -12,6 +12,11 @@ public class CreatingCriteria {
 		criteria = new SelectionCriteria();
 	}
 	
+	public String writeCriteria()
+	{
+		return criteria.getMinAge() + ";" + criteria.getMaxAge() + ";" + criteria.getYears_of_work_experience() + ";" + criteria.getHealth_records();
+	}
+	
 	public SelectionCriteria create()
 	{
 		SelectionCriteria criteria1 = new SelectionCriteria();
