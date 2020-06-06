@@ -1,5 +1,4 @@
-package missonToMars;
-
+package MissionToMars;
 import java.io.*;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,45 +13,45 @@ import java.util.List;
 
 public class Mission {
 
-        private String mission_name;
-        private String mission_description;
-        private String mission_destination;
-        private String origin_country;
-        private String allowed_country;
-        private String coordinator_name;
-        private String contact_info;
-        private String job_name;
-        private String job_description;
-        private String employment_requirements_title;
-        private int employment_requirements_number;
-        private String cargo_requirements;
-        private Date launchDate;
-        private String destination_location;
-        private int mission_duration;
-        private String mission_status;
-        private List<Mission> missions;
+    private static ArrayList<Mission> missions;
+    private String mission_name;
+    private String mission_description;
+    private String mission_destination;
+    private String origin_country;
+    private String allowed_country;
+    private String coordinator_name;
+    private String contact_info;
+    private String job_name;
+    private String job_description;
+    private String employment_requirements_title;
+    private int employment_requirements_number;
+    private String cargo_requirements;
+    private Date launchDate;
+    private String destination_location;
+    private int mission_duration;
+    private String mission_status;
+    private EmploymentDeployment EmploymentDeployment;
 
-        public Mission() {
-            mission_name = "";
-            mission_description = "";
-            mission_destination = "";
-            origin_country = "";
-            allowed_country = "";
-            coordinator_name = "";
-            contact_info = "";
-            job_name = "";
-            job_description = "";
-            employment_requirements_title = "";
-            employment_requirements_number = 0;
-            cargo_requirements = "";
-            launchDate = new Date();
-            destination_location = "";
-            mission_duration = 0;
-            mission_status = "";
-        }
+    public Mission() {
+        mission_name = "";
+        mission_description = "";
+        mission_destination = "";
+        origin_country = "";
+        allowed_country = "";
+        coordinator_name = "";
+        contact_info = "";
+        job_name = "";
+        job_description = "";
+        employment_requirements_title = "";
+        employment_requirements_number = 0;
+        cargo_requirements = "";
+        launchDate = new Date();
+        destination_location = "";
+        mission_duration = 0;
+        mission_status = "";
+    }
 
-    public Mission(String mission_name, String mission_description,
-                   String mission_destination, String origin_country,
+    public Mission(String mission_name, String mission_description, String origin_country,
                    String allowed_country, String coordinator_name,
                    String contact_info, String job_name, String job_description,
                    String employment_requirements_title, int employment_requirements_number, String cargo_requirements,
@@ -60,7 +59,6 @@ public class Mission {
                    int mission_duration, String mission_status) {
         this.mission_name = mission_name;
         this.mission_description = mission_description;
-        this.mission_destination = mission_destination;
         this.origin_country = origin_country;
         this.allowed_country = allowed_country;
         this.coordinator_name = coordinator_name;
@@ -77,7 +75,7 @@ public class Mission {
     }
 
     public Mission(String data) throws Exception {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+     //   SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         String[] infos = data.split(";");
         this.mission_name = infos[0];
         this.mission_description = infos[1];
@@ -90,7 +88,8 @@ public class Mission {
         this.employment_requirements_title = infos[8];
         this.employment_requirements_number = Integer.parseInt(infos[9]);
         this.cargo_requirements = infos[10];
-        this.launchDate = format.parse(infos[11]);
+        SimpleDateFormat print = new SimpleDateFormat("dd/MM/yyyy");
+        this.launchDate = print.parse(infos[11]);
         this.destination_location = infos[12];
         this.mission_duration = Integer.parseInt(infos[13]);
         this.mission_status = infos[14];
@@ -167,6 +166,9 @@ public class Mission {
     public void setJob_description(String job_description) {
         this.job_description = job_description;
     }
+    public EmploymentDeployment getEmployment_requirements(){
+        return  EmploymentDeployment;
+    }
 
     public String getEmployment_requirements_title() {
         return employment_requirements_title;
@@ -177,11 +179,11 @@ public class Mission {
     }
 
     public int getEmployment_requirements_number() {
-    	return employment_requirements_number;
+        return employment_requirements_number;
     }
-    
+
     public void setEmployment_requirements_number(int employment_requirements_number) {
-    	this.employment_requirements_number = employment_requirements_number;
+        this.employment_requirements_number = employment_requirements_number;
     }
     public String getCargo_requirements() {
         return cargo_requirements;
@@ -239,7 +241,6 @@ public class Mission {
     public String toString() {
         return "Mission Name: "+ mission_name + ';' +
                 "Mission Description: " +mission_description + ';' +
-                "Mission Destination: " + mission_destination + ';' +
                 "Origin Country: " + origin_country + ';' +
                 "Allowed Country: " + allowed_country + ';' +
                 "Coordinator's Name: " + coordinator_name + ';' +
@@ -255,63 +256,65 @@ public class Mission {
     }
 
     public String showConfirmInfo() {
-        return "Mission Name: "+ mission_name + '\n' +
-                "Mission Description: " +mission_description + '\n' +
-                "Mission Destination: " + mission_destination + '\n' +
-                "Origin Country: " + origin_country + '\n' +
-                "Allowed Country: " + allowed_country + '\n' +
-                "Coordinator's Name: " + coordinator_name + '\n' +
-                "Contact Information: " + contact_info + '\n' +
-                "Job Name: " + job_name + '\n' +
-                "Job Description: " + job_description + ';' +
-                "Employment Requirement: " + employment_requirements_title + employment_requirements_number + '\n' +
-                "Cargo Requirements: " + cargo_requirements + '\n' +
-                "Launch Date: " + getFormatLaunchDate() + '\n' +
-                "Destination Location: " + destination_location + '\n' +
-                "Duration of the Mission: " + mission_duration + '\n' +
-                "Mission Status: " + mission_status + '\n';
+        return "\nMission Name: "+ mission_name +
+                "\nMission Description: " +mission_description +
+                "\nOrigin Country: " + origin_country  +
+                "\nAllowed Country: " + allowed_country  +
+                "\nCoordinator's Name: " + coordinator_name  +
+                "\nContact Information: " + contact_info  +
+                "\nJob Name: " + job_name+
+                "\nJob Description: " + job_description +
+                "\nEmployment Requirement: " + employment_requirements_title + employment_requirements_number +
+                "\nCargo Requirements: " + cargo_requirements +
+                "\nLaunch Date: " + getFormatLaunchDate()  +
+                "\nDestination Location: " + destination_location  +
+                "\nDuration of the Mission: " + mission_duration+
+                "\nMission Status: " + mission_status ;
     }
 
     public String writeFileInfo(){
-            return  mission_name + ';' +
-                    mission_description + ';' +
-                    mission_destination + ';' +
-                    origin_country + ';' +
-                    allowed_country + ';' +
-                    coordinator_name + ';' +
-                    contact_info + ';' +
-                    job_name + ';' +
-                    job_description + ';' +
-                    employment_requirements_title + ';' + employment_requirements_number + ';' +
-                    cargo_requirements + ';' +
-                    getFormatLaunchDate() + ';' +
-                    destination_location + ';' +
-                    mission_duration + ';' +
-                    mission_status + ';';
+        return  mission_name + ';' +
+                mission_description + ';' +
+                origin_country + ';' +
+                allowed_country + ';' +
+                coordinator_name + ';' +
+                contact_info + ';' +
+                job_name + ';' +
+                job_description + ';' +
+                employment_requirements_title + ';' + employment_requirements_number + ';' +
+                cargo_requirements + ';' +
+                getFormatLaunchDate() + ';' +
+                destination_location + ';' +
+                mission_duration + ';' +
+                mission_status + ';';
     }
 
     //f1 - display all missions
-    public void displayMissions(){
-        missions = readMissionFile(new File("missions.txt"));
+    public static ArrayList<Mission> displayMissions(String filename){
+        missions = readMissionFile(filename);
         if (missions==null||missions.size()==0){
             System.out.println("Please create mission first.");
-            displayCoordinatorMenu();
+           // displayCoordinatorMenu();
         }
-        System.out.println(missions);
-        System.out.println("Enter R to return or enter E to exit.");
-        Scanner scanner = new Scanner(System.in);
-        String choose = scanner.next();
-        if (choose.equalsIgnoreCase("R")){
-            displayCoordinatorMenu();
-        }else if (choose.equalsIgnoreCase("E")){
-            System.exit(0);
-        }else {
-            System.exit(0);
+        for(int i=0;i<missions.size();i++)
+        {
+            System.out.println("--------------------MISSION INFORMATION:--------------------");
+        System.out.println("Mission name: "+missions.get(i).getMission_name()+"\nMission description: "+missions.get(i).getMission_description()
+        +"\nOrigin Country: "+missions.get(i).getOrigin_country()+"\nAllowed Country: "+missions.get(i).getAllowed_country()+"\nCooridinator name: "+
+                missions.get(i).getCoordinator_name()+"\nCoordinator Contact Info: "+missions.get(i).getContact_info()+"\nJob name: "+missions.get(i).getJob_name()+"\nJob description: "+
+                missions.get(i).getJob_description()+"\nEmployment requirements titles: "+missions.get(i).getEmployment_requirements_title()+
+                "\nEmployment requirements numbers: "+missions.get(i).getEmployment_requirements_number()+"\nCargo requirements: "+missions.get(i).getCargo_requirements()+
+                "\nLaunch Date: "+missions.get(i).getLaunchDate()+"\nDestination Location: "+missions.get(i).getDestination_location()+"\nMission Duration: "+missions.get(i).getMission_duration()
+        +"\nMission status: "+missions.get(i).getMission_status());
         }
+
+    //    System.out.println("Enter R to return or enter E to exit.");
+        return missions;
     }
     //f1 - read mission file
-    private List<Mission> readMissionFile(File file) {
-        List<Mission> missions = new ArrayList<>();
+    private static ArrayList<Mission> readMissionFile(String filename) {
+        File file=new File(filename);
+        ArrayList<Mission> missions = new ArrayList<Mission>();
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),
                     "UTF-8"));
@@ -329,15 +332,16 @@ public class Mission {
     }
 
     //f1 - creating a mission
-    public void createMission() {
+    public static void createMission(String filename) {
+     //   ArrayList<Mission> newmission=new ArrayList<Mission>();
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter mission name:");
         Mission mission = new Mission();
-        Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
         mission.setMission_name(name);
         System.out.println("Please enter mission description:");
         String description = scanner.nextLine();
-        mission.setMission_destination(description);
+        mission.setMission_description(description);
         System.out.println("Please enter country of origin:");
         String origin = scanner.nextLine();
         mission.setOrigin_country(origin);
@@ -357,7 +361,6 @@ public class Mission {
         String jobDescription = scanner.nextLine();
         mission.setJob_description(jobDescription);
         System.out.println("Please enter employment requirements:");
-        scanner.nextLine();
         System.out.println("Please enter the title:");
         String title = scanner.nextLine();
         mission.setEmployment_requirements_title(title);
@@ -365,21 +368,23 @@ public class Mission {
         int number = scanner.nextInt();
         mission.setEmployment_requirements_number(number);
         System.out.println("Please enter cargo requirements:");
-        String cargoRequirements = scanner.nextLine();
+        Scanner sc=new Scanner(System.in);
+        String cargoRequirements = sc.nextLine();
         mission.setCargo_requirements(cargoRequirements);
         System.out.println("Please enter launch date(yyyyMMdd):");
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-        String launchDate = scanner.nextLine();
+        Scanner sc2=new Scanner(System.in);
+        String launchDate = sc2.nextLine();
         try {
             mission.setLaunchDate(format.parse(launchDate));
         } catch (ParseException e) {
 
         }
         System.out.println("Please enter location:");
-        String location = scanner.nextLine();
+        String location = sc2.nextLine();
         mission.setDestination_location(location);
         System.out.println("Please enter duration of the mission:");
-        int duration = scanner.nextInt();
+        int duration = sc2.nextInt();
         mission.setMission_duration(duration);
         mission.setMission_status(chooseMissionStatus());
         System.out.println();
@@ -387,23 +392,23 @@ public class Mission {
         System.out.println("**************************************");
         System.out.println(mission.showConfirmInfo());
         System.out.println("**************************************");
-        System.out.println("Are you sure create the mission:(Y/N)");
+        System.out.println("Are you sure create the mission:(y/n)");
         Scanner scanner1=new Scanner(System.in);
         String confirm = scanner1.next();
         if (confirm.equalsIgnoreCase("Y")){
-            writeFile(mission.writeFileInfo(), "missions.txt");
-            System.out.println("The mission has created.");
-            displayCoordinatorMenu();
-        }else if (confirm.equalsIgnoreCase("N")){
-            createMission();
-        }else {
-            createMission();
-        }
 
+            writeFile(mission.writeFileInfo(), filename);
+            System.out.println("The mission has created.");
+        //    displayCoordinatorMenu();
+        }else if (confirm.equalsIgnoreCase("N")){
+            createMission(filename);
+        }else {
+            createMission(filename);
+        }
     }
 
     //F1 - choose the status of the mission
-    private String chooseMissionStatus() {
+    private static String chooseMissionStatus() {
         System.out.println("Please enter status of the mission:default a");
         System.out.println(" a. Planning phase");
         System.out.println(" b. Departed Earth");
@@ -433,8 +438,8 @@ public class Mission {
 
     private static void writeFile(String outputs, String path) {
         try {
-            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(path)),
-                    "UTF-8"));
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(path)),"UTF-8"
+                    ));
             bw.write(outputs);
             bw.newLine();
             bw.close();
@@ -444,45 +449,146 @@ public class Mission {
     }
 
     //f1 - display coordinators menu (if needed)
-    public void displayCoordinatorMenu() {
-        System.out.println("\f");
-        System.out.println("--------------------------------");
-        System.out.println("-                              -");
-        System.out.println("-   Coordinator Menu Screen    -");
-        System.out.println("-                              -");
-        System.out.println("--------------------------------");
 
-        System.out.println("[Mission Coordinator]");
-        System.out.println("[1] Create a mission\n" +
-                "\n" +
-                "[2] Display Missions\n" +
-                "\n" +
-                "[0] exit\n" +
-                "\n" +
-                "Please enter one option (eg. Create)");
-
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-
-        boolean proceed = true;
-        while (proceed) {
-            switch (input) {
-                case "1":
-                    createMission();
-                    proceed = false;
-                    break;
-                case "2":
-                    displayMissions();
-                    proceed = false;
-                    break;
-                case "0":
-
-                default:
-                    System.out.println("Invalid option! Please choose 'Create Mission' or 'Display Mission'.");
-                    break;
-            }
+    public static void EditMission(String filename)
+    {
+        if (displayMissions(filename).size()==0)
+        {
+            System.out.println("Please create mission first.");
         }
+        else{
+
+        String choice=null;
+      do {
+          for(int i=0;i<missions.size();i++)
+          {
+              System.out.println("--------------------MISSION INFORMATION:--------------------");
+              System.out.println("Mission name: "+missions.get(i).getMission_name()+"\nMission description: "+missions.get(i).getMission_description()
+                      +"\nOrigin Country: "+missions.get(i).getOrigin_country()+"\nAllowed Country: "+missions.get(i).getAllowed_country()+"\nCooridinator name: "+
+                      missions.get(i).getCoordinator_name()+"\nCoordinator Contact Info: "+missions.get(i).getContact_info()+"\nJob name: "+missions.get(i).getJob_name()+"\nJob description: "+
+                      missions.get(i).getJob_description()+"\nEmployment requirements titles: "+missions.get(i).getEmployment_requirements_title()+
+                      "\nEmployment requirements numbers: "+missions.get(i).getEmployment_requirements_number()+"\nCargo requirements: "+missions.get(i).getCargo_requirements()+
+                      "\nLaunch Date: "+missions.get(i).getLaunchDate()+"\nDestination Location: "+missions.get(i).getDestination_location()+"\nMission Duration: "+missions.get(i).getMission_duration()
+                      +"\nMission status: "+missions.get(i).getMission_status());
+          }
+          showList();
+          Scanner sc=new Scanner(System.in);
+          choice=sc.nextLine();
+          Mission newmission=new Mission();
+          newmission=missions.get(0);
+          switch (choice) {
+              case "1":
+                  System.out.println("Please input new changes:");
+                  String name=sc.nextLine();
+                  newmission.setMission_name(name);
+                  break;
+              case "2":
+                  System.out.println("Please input new changes:");
+                  String desc=sc.nextLine();
+                  newmission.setMission_description(desc);
+                  break;
+                  case "3":
+                      System.out.println("Please input new changes:");
+                      String orc=sc.nextLine();
+                      newmission.setOrigin_country(orc);
+                  break;
+                  case "4":System.out.println("Please input new changes:");
+                      String alc=sc.nextLine();
+                      newmission.setAllowed_country(alc);
+                  break;
+                  case "5":System.out.println("Please input new changes:");
+                      String coname=sc.nextLine();
+                      newmission.setCoordinator_name(coname);
+                  break;
+                  case "6":System.out.println("Please input new changes:");
+                      String coinfo=sc.nextLine();
+                      newmission.setContact_info(coinfo);
+                  break;
+                  case "7":System.out.println("Please input new changes:");
+                      String jn=sc.nextLine();
+                      newmission.setJob_name(jn);
+                  break;
+                  case "8":System.out.println("Please input new changes:");
+                      String jd=sc.nextLine();
+                      newmission.setJob_description(jd);
+                  break;
+                  case "9":System.out.println("Please input new changes:");
+                      String ert=sc.nextLine();
+                      newmission.setEmployment_requirements_title(ert);
+                  break;
+                  case "10":System.out.println("Please input new changes:");
+                      int ern=sc.nextInt();
+                      newmission.setEmployment_requirements_number(ern);
+                  break;
+                  case "11":System.out.println("Please input new changes:");
+                      String cr=sc.nextLine();
+                      newmission.setCargo_requirements(cr);
+                  break;
+                  case "12":System.out.println("Please input new changes:");
+                      SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+                      Scanner sc2=new Scanner(System.in);
+                      String launchDate = sc2.nextLine();
+                      try {
+                          newmission.setLaunchDate(format.parse(launchDate));
+                      } catch (ParseException e) {
+                      }
+                  break;
+                  case "13":System.out.println("Please input new changes:");
+                      String dl=sc.nextLine();
+                      newmission.setDestination_location(dl);
+                  break;
+                  case "14":System.out.println("Please input new changes:");
+                      int md=sc.nextInt();
+                      newmission.setMission_duration(md);
+
+                  break;
+                  case "15":System.out.println("Please input new changes:");
+                      String status=chooseMissionStatus();
+                      newmission.setMission_status(status);
+
+                  break;
+              case "16":
+                  System.out.println("Mission Information Confirm:");
+                  System.out.println("**************************************");
+                  System.out.println(newmission.showConfirmInfo());
+                  System.out.println("**************************************");
+                  System.out.println("Are you sure changed the mission?:(y/n)");
+                  Scanner scanner1=new Scanner(System.in);
+                  String confirm = scanner1.next();
+                  if (confirm.equalsIgnoreCase("Y")){
+
+                      writeFile(newmission.writeFileInfo(), filename);
+                      System.out.println("The mission has changed.");}
+                  else{
+                      break;
+                  }
+              default:
+                 // System.out.println("Error input");
+                  break;
+                  }
+      }while(!choice.equals("0"));}
     }
-
-
+    public static void showList(){
+        System.out.println("");
+        System.out.println("Please choose the option :");
+        System.out.println("0.Back to previous Menu");
+        System.out.println("1.Mission name");
+        System.out.println("2.Mission description");
+        System.out.println("3.Origin country");
+        System.out.println("4.Allowed country");
+        System.out.println("5.Coordinator name");
+        System.out.println("6.Coordinator contact infomation");
+        System.out.println("7.Job name");
+        System.out.println("8.Job description");
+        System.out.println("9.Employment requirements title");
+        System.out.println("10.Employment requirements number");
+        System.out.println("11.Cargorequirements");
+        System.out.println("12.Launch Date");
+        System.out.println("13.Destination location");
+        System.out.println("14.Mission duration");
+        System.out.println("15.Mission status");
+        System.out.println("16.Finish and Save");
+    }
 }
+
+
