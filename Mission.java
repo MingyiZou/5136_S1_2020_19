@@ -23,7 +23,8 @@ public class Mission {
         private String contact_info;
         private String job_name;
         private String job_description;
-        private String employment_requirements;
+        private String employment_requirements_title;
+        private int employment_requirements_number;
         private String cargo_requirements;
         private Date launchDate;
         private String destination_location;
@@ -41,7 +42,8 @@ public class Mission {
             contact_info = "";
             job_name = "";
             job_description = "";
-            employment_requirements = new EmploymentDeployment();
+            employment_requirements_title = "";
+            employment_requirements_number = 0;
             cargo_requirements = "";
             launchDate = new Date();
             destination_location = "";
@@ -53,7 +55,7 @@ public class Mission {
                    String mission_destination, String origin_country,
                    String allowed_country, String coordinator_name,
                    String contact_info, String job_name, String job_description,
-                   EmploymentDeployment employment_requirements, String cargo_requirements,
+                   String employment_requirements_title, int employment_requirements_number, String cargo_requirements,
                    Date lunch_date, String destination_location,
                    int mission_duration, String mission_status) {
         this.mission_name = mission_name;
@@ -65,7 +67,8 @@ public class Mission {
         this.contact_info = contact_info;
         this.job_name = job_name;
         this.job_description = job_description;
-        this.employment_requirements = employment_requirements;
+        this.employment_requirements_title = employment_requirements_title;
+        this.employment_requirements_number = employment_requirements_number;
         this.cargo_requirements = cargo_requirements;
         this.launchDate = lunch_date;
         this.destination_location = destination_location;
@@ -84,12 +87,13 @@ public class Mission {
         this.contact_info = infos[5];
         this.job_name = infos[6];
         this.job_description = infos[7];
-        this.employment_requirements = infos[8];
-        this.cargo_requirements = infos[9];
-        this.launchDate = format.parse(infos[10]);
-        this.destination_location = infos[11];
-        this.mission_duration = Integer.parseInt(infos[12]);
-        this.mission_status = infos[13];
+        this.employment_requirements_title = infos[8];
+        this.employment_requirements_number = Integer.parseInt(infos[9]);
+        this.cargo_requirements = infos[10];
+        this.launchDate = format.parse(infos[11]);
+        this.destination_location = infos[12];
+        this.mission_duration = Integer.parseInt(infos[13]);
+        this.mission_status = infos[14];
     }
 
     public String getMission_name() {
@@ -164,14 +168,21 @@ public class Mission {
         this.job_description = job_description;
     }
 
-    public EmploymentDeployment getEmployment_requirements() {
-        return employment_requirements;
+    public String getEmployment_requirements_title() {
+        return employment_requirements_title;
     }
 
-    public void setEmployment_requirements(EmploymentDeployment employment_requirements) {
-        this.employment_requirements = employment_requirements;
+    public void setEmployment_requirements_title(String employment_requirements_title) {
+        this.employment_requirements_title = employment_requirements_title;
     }
 
+    public int getEmployment_requirements_number() {
+    	return employment_requirements_number;
+    }
+    
+    public void setEmployment_requirements_number(int employment_requirements_number) {
+    	this.employment_requirements_number = employment_requirements_number;
+    }
     public String getCargo_requirements() {
         return cargo_requirements;
     }
@@ -235,7 +246,7 @@ public class Mission {
                 "Contact Information: " + contact_info + ';' +
                 "Job Name: " + job_name + ';' +
                 "Job Description: " + job_description + ';' +
-                "Employment Requirement: " + employment_requirements + ';' +
+                "Employment Requirement: " + employment_requirements_title + ';' + employment_requirements_number +
                 "Cargo Requirements: " + cargo_requirements + ';' +
                 "Launch Date: " + getFormatLaunchDate() + ';' +
                 "Destination Location: " + destination_location + ';' +
@@ -253,7 +264,7 @@ public class Mission {
                 "Contact Information: " + contact_info + '\n' +
                 "Job Name: " + job_name + '\n' +
                 "Job Description: " + job_description + ';' +
-                "Employment Requirement: " + employment_requirements + '\n' +
+                "Employment Requirement: " + employment_requirements_title + employment_requirements_number + '\n' +
                 "Cargo Requirements: " + cargo_requirements + '\n' +
                 "Launch Date: " + getFormatLaunchDate() + '\n' +
                 "Destination Location: " + destination_location + '\n' +
@@ -271,7 +282,7 @@ public class Mission {
                     contact_info + ';' +
                     job_name + ';' +
                     job_description + ';' +
-                    employment_requirements + ';' +
+                    employment_requirements_title + ';' + employment_requirements_number + ';' +
                     cargo_requirements + ';' +
                     getFormatLaunchDate() + ';' +
                     destination_location + ';' +
@@ -349,10 +360,10 @@ public class Mission {
         scanner.nextLine();
         System.out.println("Please enter the title:");
         String title = scanner.nextLine();
-        mission.employment_requirements.setEmpTitle(title);
+        mission.setEmployment_requirements_title(title);
         System.out.println("Please enter the number required:");
         int number = scanner.nextInt();
-        mission.employment_requirements.setNumReq(number);
+        mission.setEmployment_requirements_number(number);
         System.out.println("Please enter cargo requirements:");
         String cargoRequirements = scanner.nextLine();
         mission.setCargo_requirements(cargoRequirements);
